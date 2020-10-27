@@ -1,0 +1,41 @@
+(*---------------------------------------------------------------------------------------------------------------------------------*)
+VAR
+	ErrorText : STRING[LOGBOOK_TEXT_LEN];
+	cntFilterNo : UINT;
+	cntFilterText : UINT;
+	cntFilterFacility : UINT;
+	cntFilterSeverity : UINT;
+	cntFilterDate : UINT;
+	tmpSTR : STRING[100];
+	tmpDT : DATE_AND_TIME;
+	tmpDTstruct : DTStructure;
+	TimeStart : DATE_AND_TIME;
+	TimeEnd : DATE_AND_TIME;
+	AddData : ARRAY[0..500] OF USINT;
+	Facility : typFacility;
+	idx : UINT;
+	animation : USINT;
+END_VAR
+(*---------------------------------------------------------------------------------------------------------------------------------*)
+(*Local function*)
+VAR
+	ArEventLogGetPreviousRecordID_0 : ArEventLogGetPreviousRecordID;
+	ArEventLogGetLatestRecordID_0 : ArEventLogGetLatestRecordID;
+	ArEventLogRead_0 : ArEventLogRead;
+	ArEventLogReadErrorNumber_0 : ArEventLogReadErrorNumber;
+	ArEventLogReadDescription_0 : ArEventLogReadDescription;
+	ArEventLogReadAddData_0 : ArEventLogReadAddData;
+	DTGetTime_0 : DTGetTime;
+END_VAR
+(*Local variables*)
+VAR
+	state : enumLogbook;
+	ArEventLogGetIdent_0 : ArEventLogGetIdent;
+	executions : USINT;
+END_VAR
+(*---------------------------------------------------------------------------------------------------------------------------------*)
+(*Local constants*)
+VAR CONSTANT
+	FACILITY_NAMES : ARRAY[0..LOGBOOK_FACILITIES_TOTAL] OF STRING[50] := ['$$accsec','$$diag','$$arlogconn','$$fieldbus','$$firewall','$$mapp','$$motion','$$safety','$$arlogsys','$$textsys','$$unitsys','$$arlogusr','$$vision','$$visu'];
+	FACILITY_TEXT : ARRAY[0..LOGBOOK_FACILITIES_TOTAL] OF STRING[50] := ['Access','Commissioning','Connectivity','Fieldbus','Firewall','Mapp','Motion','Safety','System','Text System','Unit System','User','Vision','Visualization'];
+END_VAR

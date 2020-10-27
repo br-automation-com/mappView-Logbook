@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OpcUaSource FileVersion="7" ArVersion="C4.72">
+  <Aliases>
+    <ACLAliases>
+      <ACL Id="1">
+        <ACE RoleId="1" RoleName="Everyone" Access="0x015F" />
+      </ACL>
+      <ACL Id="2">
+        <ACE RoleId="1" RoleName="Everyone" Access="0x017F" />
+      </ACL>
+    </ACLAliases>
+    <EURangeViolationAliases />
+    <EURangesAliases />
+    <EngineeringUnitAliases />
+  </Aliases>
+  <DefaultView AclId="2">
+    <Module Name="&lt;Default&gt;">
+      <GlobalVariables Name="Global Variables">
+        <Variable Name="gLogbook" AutomaticEnable="True">
+          <Variable Name="DAT">
+            <Variable Name="CntSeverity" EnableArrayElements="True" />
+            <Variable Name="CntFacility" EnableArrayElements="True" />
+            <Variable Name="Entries">
+              <Variable Name="EventID" EnableArrayElements="True" />
+              <Variable Name="Timestamp" EnableArrayElements="True" />
+              <Variable Name="DTsec" EnableArrayElements="True" />
+              <Variable Name="DTmsec" EnableArrayElements="True" />
+              <Variable Name="Severity" EnableArrayElements="True" />
+              <Variable Name="Code" EnableArrayElements="True" />
+              <Variable Name="FacilityCode" EnableArrayElements="True" />
+              <Variable Name="FacilityText" EnableArrayElements="True" />
+              <Variable Name="ErrorNo" EnableArrayElements="True" />
+              <Variable Name="ErrorText" EnableArrayElements="True" />
+            </Variable>
+          </Variable>
+          <Variable Name="PAR">
+            <Variable Name="FilterSeverity" EnableArrayElements="True" />
+            <Variable Name="FilterFacility" EnableArrayElements="True" />
+          </Variable>
+        </Variable>
+        <Variable Name="LOGBOOK_ENTRIES_TOTAL" />
+        <Variable Name="LOGBOOK_EXECUTIONS" />
+        <Variable Name="LOGBOOK_TEXT_LEN" />
+      </GlobalVariables>
+      <Task Name="Logbook" />
+    </Module>
+  </DefaultView>
+</OpcUaSource>
