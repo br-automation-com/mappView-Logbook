@@ -83,13 +83,6 @@
 		<!-- Filter for severity was changed -->
 		<EventBinding id="contentLogbook.chkFilterNotification.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterNotification" event="ValueChanged" />
-			<EventHandler condition="">
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.PAR.FilterSeverity[0]">
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="=newValueBool" />
-					</Target>
-				</Action>
-			</EventHandler>
 			<EventHandler>
 				<Action>
 					<Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLogbook" widgetRefId="labNotification">
@@ -100,13 +93,6 @@
 		</EventBinding>
 		<EventBinding id="contentLogbook.chkFilterInformation.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterInformation" event="ValueChanged" />
-			<EventHandler condition="">
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.PAR.FilterSeverity[1]">
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="=newValueBool" />
-					</Target>
-				</Action>
-			</EventHandler>
 			<EventHandler>
 				<Action>
 					<Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLogbook" widgetRefId="labNotification">
@@ -117,13 +103,6 @@
 		</EventBinding>
 		<EventBinding id="contentLogbook.chkFilterWarning.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterWarning" event="ValueChanged" />
-			<EventHandler condition="">
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.PAR.FilterSeverity[2]">
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="=newValueBool" />
-					</Target>
-				</Action>
-			</EventHandler>
 			<EventHandler>
 				<Action>
 					<Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLogbook" widgetRefId="labNotification">
@@ -134,13 +113,6 @@
 		</EventBinding>
 		<EventBinding id="contentLogbook.chkFilterError.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterError" event="ValueChanged" />
-			<EventHandler condition="">
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.PAR.FilterSeverity[3]">
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="=newValueBool" />
-					</Target>
-				</Action>
-			</EventHandler>
 			<EventHandler>
 				<Action>
 					<Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLogbook" widgetRefId="labNotification">
@@ -194,13 +166,6 @@
 		<!-- Filter for facility was changed -->
 		<EventBinding id="contentLogbook.chkFilterAccSec.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterAccSec" event="ValueChanged" />
-			<EventHandler condition="">
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[0]">
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="=newValueBool" />
-					</Target>
-				</Action>
-			</EventHandler>
 			<EventHandler>
 				<Action>
 					<Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLogbook" widgetRefId="labNotification">
@@ -211,13 +176,6 @@
 		</EventBinding>
 		<EventBinding id="contentLogbook.chkFilterCommissioning.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterCommissioning" event="ValueChanged" />
-			<EventHandler condition="">
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[1]">
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="=newValueBool" />
-					</Target>
-				</Action>
-			</EventHandler>
 			<EventHandler>
 				<Action>
 					<Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLogbook" widgetRefId="labNotification">
@@ -228,13 +186,6 @@
 		</EventBinding>
 		<EventBinding id="contentLogbook.chkFilterConnectivity.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterConnectivity" event="ValueChanged" />
-			<EventHandler condition="">
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[2]">
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="=newValueBool" />
-					</Target>
-				</Action>
-			</EventHandler>
 			<EventHandler>
 				<Action>
 					<Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLogbook" widgetRefId="labNotification">
@@ -245,13 +196,6 @@
 		</EventBinding>
 		<EventBinding id="contentLogbook.chkFilterFieldbus.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterFieldbus" event="ValueChanged" />
-			<EventHandler condition="">
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[3]">
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="=newValueBool" />
-					</Target>
-				</Action>
-			</EventHandler>
 			<EventHandler>
 				<Action>
 					<Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLogbook" widgetRefId="labNotification">
@@ -262,13 +206,6 @@
 		</EventBinding>
 		<EventBinding id="contentLogbook.chkFilterFirewall.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterFirewall" event="ValueChanged" />
-			<EventHandler condition="">
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[4]">
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="=newValueBool" />
-					</Target>
-				</Action>
-			</EventHandler>
 			<EventHandler>
 				<Action>
 					<Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLogbook" widgetRefId="labNotification">
@@ -279,13 +216,6 @@
 		</EventBinding>
 		<EventBinding id="contentLogbook.chkFilterMapp.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterMapp" event="ValueChanged" />
-			<EventHandler condition="">
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[5]">
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="=newValueBool" />
-					</Target>
-				</Action>
-			</EventHandler>
 			<EventHandler>
 				<Action>
 					<Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLogbook" widgetRefId="labNotification">
@@ -296,13 +226,6 @@
 		</EventBinding>
 		<EventBinding id="contentLogbook.chkFilterMotion.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterMotion" event="ValueChanged" />
-			<EventHandler condition="">
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[6]">
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="=newValueBool" />
-					</Target>
-				</Action>
-			</EventHandler>
 			<EventHandler>
 				<Action>
 					<Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLogbook" widgetRefId="labNotification">
@@ -313,13 +236,6 @@
 		</EventBinding>
 		<EventBinding id="contentLogbook.chkFilterSafety.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterSafety" event="ValueChanged" />
-			<EventHandler condition="">
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[7]">
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="=newValueBool" />
-					</Target>
-				</Action>
-			</EventHandler>
 			<EventHandler>
 				<Action>
 					<Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLogbook" widgetRefId="labNotification">
@@ -330,13 +246,6 @@
 		</EventBinding>
 		<EventBinding id="contentLogbook.chkFilterSystem.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterSystem" event="ValueChanged" />
-			<EventHandler condition="">
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[8]">
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="=newValueBool" />
-					</Target>
-				</Action>
-			</EventHandler>
 			<EventHandler>
 				<Action>
 					<Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLogbook" widgetRefId="labNotification">
@@ -347,13 +256,6 @@
 		</EventBinding>
 		<EventBinding id="contentLogbook.chkFilterTextSystem.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterTextSystem" event="ValueChanged" />
-			<EventHandler condition="">
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[9]">
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="=newValueBool" />
-					</Target>
-				</Action>
-			</EventHandler>
 			<EventHandler>
 				<Action>
 					<Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLogbook" widgetRefId="labNotification">
@@ -364,13 +266,6 @@
 		</EventBinding>
 		<EventBinding id="contentLogbook.chkFilterUnitSystem.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterUnitSystem" event="ValueChanged" />
-			<EventHandler condition="">
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[10]">
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="=newValueBool" />
-					</Target>
-				</Action>
-			</EventHandler>
 			<EventHandler>
 				<Action>
 					<Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLogbook" widgetRefId="labNotification">
@@ -381,13 +276,6 @@
 		</EventBinding>
 		<EventBinding id="contentLogbook.chkFilterUser.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterUser" event="ValueChanged" />
-			<EventHandler condition="">
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[11]">
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="=newValueBool" />
-					</Target>
-				</Action>
-			</EventHandler>
 			<EventHandler>
 				<Action>
 					<Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLogbook" widgetRefId="labNotification">
@@ -398,13 +286,6 @@
 		</EventBinding>
 		<EventBinding id="contentLogbook.chkFilterVision.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterVision" event="ValueChanged" />
-			<EventHandler condition="">
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[12]">
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="=newValueBool" />
-					</Target>
-				</Action>
-			</EventHandler>
 			<EventHandler>
 				<Action>
 					<Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLogbook" widgetRefId="labNotification">
@@ -415,13 +296,6 @@
 		</EventBinding>
 		<EventBinding id="contentLogbook.chkFilterVisualization.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterVisualization" event="ValueChanged" />
-			<EventHandler condition="">
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[13]">
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="=newValueBool" />
-					</Target>
-				</Action>
-			</EventHandler>
 			<EventHandler>
 				<Action>
 					<Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLogbook" widgetRefId="labNotification">
