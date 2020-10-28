@@ -17,6 +17,7 @@ PROGRAM _CYCLIC
 	// Abort current update run
 	IF EDGENEG(gLogbook.CMD.Refresh) THEN
 		IF 	state <> enumError THEN
+			gLogbook.Status := ERR_OK;
 			state := enumWait;
 		END_IF
 	END_IF
@@ -102,7 +103,7 @@ PROGRAM _CYCLIC
 				IF ArEventLogGetLatestRecordID_0.Done AND ArEventLogGetLatestRecordID_0.StatusID = ERR_OK THEN
 					Facility.RecordID[Facility.CntFacility] := ArEventLogGetLatestRecordID_0.RecordID;
 					state := enumDetails1;
-					// Error
+				// Error
 				ELSIF ArEventLogGetLatestRecordID_0.Error THEN
 					gLogbook.ERR.State := state;
 					gLogbook.Status := ArEventLogGetLatestRecordID_0.StatusID;
