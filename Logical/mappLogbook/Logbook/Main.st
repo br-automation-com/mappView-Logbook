@@ -43,7 +43,6 @@ PROGRAM _CYCLIC
 				ArEventLogReadDescription_0(Execute := FALSE);
 				ArEventLogReadAddData_0(Execute := FALSE);
 				
-				// --------------------------------------------------------------------------------------------------------------------
 				// Hide unused table rows
 				brsitoa(gLogbook.DAT.EntriesTotal, ADR(tmpSTR));
 				gLogbook.PAR.TableConfig := '{"specRows":[{"from":';
@@ -53,12 +52,10 @@ PROGRAM _CYCLIC
 				brsstrcat(ADR(gLogbook.PAR.TableConfig), ADR(tmpSTR));
 				brsstrcat(ADR(gLogbook.PAR.TableConfig), ADR(', "visible":false}]}'));	
 				
-				// Get current date
+				// Get current date and show status
 				DTGetTime_0.enable := TRUE;
 				DTGetTime_0();
 				gLogbook.PAR.DateNow := DTGetTime_0.DT1;
-				
-				// Show status and limit warninf
 				gLogbook.StatusText := 'Waiting...';
 				EXIT;
 				// --------------------------------------------------------------------------------------------------------------------
@@ -266,7 +263,6 @@ PROGRAM _CYCLIC
 						cntFilterSeverity := cntFilterSeverity + 1;
 					END_IF
 				END_IF
-
 				// --------------------------------------------------------------------------------------------------------------------
 				// Check date range
 				tmpSTR:= DT_TO_STRING(DATE_TO_DT(gLogbook.PAR.FilterDateStart));
@@ -318,7 +314,7 @@ PROGRAM _CYCLIC
 					ELSE
 						gLogbook.DAT.Entries.ErrorNo[idx] := ArEventLogRead_0.EventID;
 					END_IF
-					gLogbook.DAT.Entries.ErrorText[idx] := ErrorText;
+					httpUtf8ToString_0(enable := TRUE, pSrc := ADR(ErrorText), pDest := ADR(gLogbook.DAT.Entries.ErrorText[idx]), destSize := SIZEOF(gLogbook.DAT.Entries.ErrorText[idx]));
 				END_IF
 			
 				// --------------------------------------------------------------------------------------------------------------------

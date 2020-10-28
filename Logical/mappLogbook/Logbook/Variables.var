@@ -26,6 +26,7 @@ VAR
 	ArEventLogReadDescription_0 : ArEventLogReadDescription;
 	ArEventLogReadAddData_0 : ArEventLogReadAddData;
 	DTGetTime_0 : DTGetTime;
+	httpUtf8ToString_0 : httpUtf8ToString;
 END_VAR
 (*Local variables*)
 VAR
