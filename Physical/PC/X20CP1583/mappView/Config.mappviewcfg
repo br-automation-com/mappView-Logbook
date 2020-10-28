@@ -13,7 +13,7 @@
       </Group>
       <Group ID="DiagnosticPageConf">
         <Selector ID="DiagnosticPageSelection" Value="2">
-          <Property ID="DiagnosticPageRole[1]" Value="Service" />
+          <Property ID="DiagnosticPageRole[1]" Value="Administrators" />
         </Selector>
       </Group>
     </Group>
