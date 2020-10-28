@@ -137,81 +137,81 @@
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.AbortOnEntriesLimit" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkStopMaxEntries" attribute="value" />
 		</Binding>
-	<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.CMD.Refresh" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="btnRefresh" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[0]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterAccSec" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[1]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterCommissioning" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[2]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterConnectivity" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[3]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterFieldbus" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[4]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterFirewall" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[5]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterMapp" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[6]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterMotion" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[7]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterSafety" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[8]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterSystem" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[9]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterTextSystem" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[10]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterUnitSystem" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[11]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterUser" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[12]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterVision" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[13]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterVisualization" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterSeverity[3]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterError" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterSeverity[2]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterWarning" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterSeverity[1]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterInformation" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterSeverity[0]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterNotification" attribute="value" />
-</Binding>
-</Bindings>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.CMD.Refresh" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="btnRefresh" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[0]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterAccSec" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[1]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterCommissioning" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[2]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterConnectivity" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[3]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterFieldbus" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[4]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterFirewall" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[5]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterMapp" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[6]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterMotion" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[7]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterSafety" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[8]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterSystem" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[9]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterTextSystem" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[10]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterUnitSystem" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[11]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterUser" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[12]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterVision" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterFacility[13]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterVisualization" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterSeverity[3]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterError" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterSeverity[2]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterWarning" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterSeverity[1]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterInformation" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterSeverity[0]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterNotification" attribute="value" />
+		</Binding>
+	</Bindings>
 </BindingsSet>

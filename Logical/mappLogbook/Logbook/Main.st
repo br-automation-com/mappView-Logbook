@@ -16,7 +16,9 @@ END_PROGRAM
 PROGRAM _CYCLIC
 	// Abort current update run
 	IF EDGENEG(gLogbook.CMD.Refresh) THEN
-		state := enumWait;
+		IF 	state <> enumError THEN
+			state := enumWait;
+		END_IF
 	END_IF
 	// Run task multiple times to speed up process
 	FOR executions:=1 TO LOGBOOK_EXECUTIONS DO
@@ -120,11 +122,18 @@ PROGRAM _CYCLIC
 				IF ArEventLogGetPreviousRecordID_0.Done AND ArEventLogGetPreviousRecordID_0.StatusID = ERR_OK THEN
 					Facility.RecordID[Facility.CntFacility] := ArEventLogGetPreviousRecordID_0.PrevRecordID;
 					state := enumDetails1;
-					// Error
+				// Error
 				ELSIF ArEventLogGetPreviousRecordID_0.Error THEN
-					gLogbook.ERR.State := state;
-					gLogbook.Status := ArEventLogGetPreviousRecordID_0.StatusID;
-					state := enumError;
+					// Last entry reached is no error
+					IF ArEventLogGetPreviousRecordID_0.StatusID = arEVENTLOG_ERR_RECORDID_INVALID THEN
+						Facility.RecordID[Facility.CntFacility] := 1;
+						state := enumPrep;
+					// Everything else is an error
+					ELSE
+						gLogbook.ERR.State := state;
+						gLogbook.Status := ArEventLogGetPreviousRecordID_0.StatusID;
+						state := enumError;
+					END_IF
 				END_IF
 				// --------------------------------------------------------------------------------------------------------------------
 				// Read event id and time stamp
@@ -331,7 +340,12 @@ PROGRAM _CYCLIC
 				ArEventLogReadErrorNumber_0(Execute := FALSE);
 				ArEventLogReadDescription_0(Execute := FALSE);
 				ArEventLogReadAddData_0(Execute := FALSE);
+				state := enumPrep;
 			
+				// --------------------------------------------------------------------------------------------------------------------
+				// Perpare for next entry
+				// --------------------------------------------------------------------------------------------------------------------
+			enumPrep:
 				// Find next facility from here to the end
 				REPEAT 
 					Facility.CntFacility := Facility.CntFacility + 1;

@@ -11,6 +11,7 @@ TYPE
 		enumDetails3,
 		enumDetails4,
 		enumFilter,
+		enumPrep,
 		enumError
 		);
 	enumSeverity : 
