@@ -60,6 +60,7 @@ PROGRAM _CYCLIC
 				DTGetTime_0.enable := TRUE;
 				DTGetTime_0();
 				gLogbook.PAR.DateNow := DTGetTime_0.DT1;
+				gLogbook.CMD.ResetError := FALSE;
 				gLogbook.StatusText := 'Waiting...';
 				EXIT;
 				// --------------------------------------------------------------------------------------------------------------------
