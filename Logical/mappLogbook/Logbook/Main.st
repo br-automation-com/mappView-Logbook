@@ -378,6 +378,7 @@ PROGRAM _CYCLIC
 				// Reset error
 				IF gLogbook.CMD.ResetError THEN
 					brsmemset(ADR(gLogbook.ERR), 0, SIZEOF(gLogbook.ERR));
+					gLogbook.Status := 0;
 					gLogbook.CMD.ResetError := FALSE;
 					state := enumWait;	
 				END_IF
