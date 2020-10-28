@@ -116,5 +116,6 @@
     <Widget xsi:type="widgets.brease.Label" id="Label20" top="70" left="10" width="81" height="20" zIndex="328" text="Error Text" textAlign="right" bold="true" />
     <Widget xsi:type="widgets.brease.TextInput" id="txtFilterErrorText" top="65" left="93" width="257" zIndex="329" />
     <Widget xsi:type="widgets.brease.CheckBox" id="chkFilterSeverity" top="10" left="410" width="95" zIndex="313" boxSize="20" text="Severity" value="true" fontSize="14px" bold="true" />
+    <Widget xsi:type="widgets.brease.CheckBox" id="chkStopMaxEntries" top="725" left="395" width="320" height="25" zIndex="330" boxSize="20" text="Stop searching when max entries is reached" fontSize="14px" />
   </Widgets>
 </Content>

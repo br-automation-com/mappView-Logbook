@@ -55,6 +55,7 @@ TYPE
 		FilterDateEnd : DATE;
 		DateNow : DATE_AND_TIME; (*Current date and time*)
 		Sorting : enumSorting := sortingDESC; (*Sort date asc or desc*)
+		AbortOnEntriesLimit : BOOL; (*Stop looking for additional entries when limit is reached*)
 	END_STRUCT;
 	logbookERR : 	STRUCT  (*Error structure*)
 		State : enumLogbook; (*State where the error occured*)

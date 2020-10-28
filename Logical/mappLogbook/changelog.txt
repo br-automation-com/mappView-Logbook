@@ -1,2 +1,6 @@
+Next Version
+- Fixed special characters not showing up correct
+- Option to stop searching when entry limit is reached
+
 Version 0.1
 - First public release

@@ -105,35 +105,37 @@
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.DAT.CntFacility[7]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numCntSafety" attribute="value" />
 		</Binding>
-		
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.DAT.CntFacility[10]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numCntUnitSystem" attribute="value" />
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.DAT.CntFacility[8]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numCntSystem" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.DAT.CntFacility[9]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numCntTextSystem" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.DAT.CntFacility[8]" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numCntSystem" attribute="value" />
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.DAT.CntFacility[10]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numCntUnitSystem" attribute="value" />
+		</Binding>	
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.DAT.CntFacility[11]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numCntUser" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.DAT.CntFacility[12]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numCntVision" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.DAT.CntFacility[13]" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numCntVisualization" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterErrorText" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="txtFilterErrorText" attribute="value" />
 		</Binding>
-	
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.DAT.CntFacility[11]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numCntUser" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.DAT.CntFacility[13]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numCntVisualization" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.DAT.CntFacility[12]" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numCntVision" attribute="value" />
-</Binding>
-</Bindings>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.AbortOnEntriesLimit" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkStopMaxEntries" attribute="value" />
+		</Binding>
+	</Bindings>
 </BindingsSet>

@@ -349,8 +349,8 @@ PROGRAM _CYCLIC
 						UNTIL Facility.CntFacility > LOGBOOK_FACILITIES_TOTAL
 					END_REPEAT;
 				END_IF
-				// No facility found, we must be done
-				IF Facility.CntFacility > LOGBOOK_FACILITIES_TOTAL THEN
+				// Finish when no facility found or max entries is reached
+				IF Facility.CntFacility > LOGBOOK_FACILITIES_TOTAL OR (gLogbook.PAR.AbortOnEntriesLimit AND gLogbook.DAT.EntriesTotal = LOGBOOK_ENTRIES_TOTAL) THEN
 					gLogbook.Status := ERR_OK;
 					gLogbook.CMD.Refresh := FALSE;
 					state := enumWait;

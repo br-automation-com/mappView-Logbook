@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EventBindingSet id="Logbook_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Bindings>
+		<!-- Show notification when value was changes -->
 		<EventBinding id="contentLogbook.numFilterErrorNo.ValueChanged">
 			<Source xsi:type="widgets.brease.NumericInput.Event" contentRefId="contentLogbook" widgetRefId="numFilterErrorNo" event="ValueChanged" />
 			<EventHandler>
@@ -41,6 +42,7 @@
 				</Action>
 			</EventHandler>
 		</EventBinding>
+		<!-- Show notification when max number of entries is reached -->
 		<EventBinding id="EventBinding_1">
 			<Source xsi:type="opcUa.Event" refId="::AsGlobalPV:gLogbook.DAT.EntriesTotal" event="ValueChanged" />
 			<Operand datatype="ANY_INT" name="MAX_ENTRIES">
@@ -56,6 +58,7 @@
 				</Action>
 			</EventHandler>
 		</EventBinding>
+		<!-- Refresh button -->
 		<EventBinding id="contentLogbook.btnRefresh.Click">
 			<Source xsi:type="widgets.brease.Button.Event" contentRefId="contentLogbook" widgetRefId="btnRefresh" event="Click" />
 			<EventHandler>
@@ -73,6 +76,7 @@
 				</Action>
 			</EventHandler>
 		</EventBinding>
+		<!-- Reset errors -->
 		<EventBinding id="contentLogbook.btnResetError.Click">
 			<Source xsi:type="widgets.brease.Button.Event" contentRefId="contentLogbook" widgetRefId="btnResetError" event="Click" />
 			<EventHandler>
@@ -83,6 +87,7 @@
 				</Action>
 			</EventHandler>
 		</EventBinding>
+		<!-- Filter for severity was changed -->
 		<EventBinding id="contentLogbook.chkFilterNotification.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterNotification" event="ValueChanged" />
 			<EventHandler condition="">
@@ -193,6 +198,7 @@
 				</Sequence>
 			</EventHandler>
 		</EventBinding>
+		<!-- Filter for facility was changed -->
 		<EventBinding id="contentLogbook.chkFilterAccSec.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterAccSec" event="ValueChanged" />
 			<EventHandler condition="">
@@ -543,6 +549,7 @@
 				</Sequence>
 			</EventHandler>
 		</EventBinding>
+		<!-- Filter for date was changed -->
 		<EventBinding id="contentLogbook.btnDateToday.Click">
 			<Source xsi:type="widgets.brease.Button.Event" contentRefId="contentLogbook" widgetRefId="btnDateToday" event="Click" />
 			<Operand datatype="DATE_AND_TIME" name="DateNow">
