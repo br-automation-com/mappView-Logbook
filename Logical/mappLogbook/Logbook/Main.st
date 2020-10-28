@@ -14,7 +14,11 @@ PROGRAM _INIT
 END_PROGRAM
 
 PROGRAM _CYCLIC
-	
+	// Abort current update run
+	IF EDGENEG(gLogbook.CMD.Refresh) THEN
+		state := enumWait;
+	END_IF
+	// Run task multiple times to speed up process
 	FOR executions:=1 TO LOGBOOK_EXECUTIONS DO
 		// --------------------------------------------------------------------------------------------------------------------
 		// Logbook state machine

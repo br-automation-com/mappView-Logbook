@@ -137,5 +137,9 @@
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.AbortOnEntriesLimit" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkStopMaxEntries" attribute="value" />
 		</Binding>
-	</Bindings>
+	<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.CMD.Refresh" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="btnRefresh" attribute="value" />
+</Binding>
+</Bindings>
 </BindingsSet>

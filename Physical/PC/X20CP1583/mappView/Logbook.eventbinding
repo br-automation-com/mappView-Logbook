@@ -60,18 +60,11 @@
 		</EventBinding>
 		<!-- Refresh button -->
 		<EventBinding id="contentLogbook.btnRefresh.Click">
-			<Source xsi:type="widgets.brease.Button.Event" contentRefId="contentLogbook" widgetRefId="btnRefresh" event="Click" />
+			<Source xsi:type="widgets.brease.ToggleButton.Event" contentRefId="contentLogbook" widgetRefId="btnRefresh" event="Click" />
 			<EventHandler>
 				<Action>
 					<Target xsi:type="widgets.brease.Label.Action" contentRefId="contentLogbook" widgetRefId="labNotification">
 						<Method xsi:type="widgets.brease.Label.Action.SetText" text="" />
-					</Target>
-				</Action>
-			</EventHandler>
-			<EventHandler>
-				<Action>
-					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.CMD.Refresh">
-						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
 					</Target>
 				</Action>
 			</EventHandler>
