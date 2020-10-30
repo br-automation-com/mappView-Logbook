@@ -12,7 +12,8 @@ TYPE
 		enumDetails4,
 		enumFilter,
 		enumPrep,
-		enumError
+		enumError,
+		enumNone
 		);
 	enumSeverity : 
 		(
@@ -43,10 +44,12 @@ TYPE
 		sortingDESC
 		);
 	logbookCMD : 	STRUCT  (*Command structure*)
-		Refresh : BOOL; (*Refresh entries*)
+		Refresh : BOOL; (*Read all entries*)
+		Update : BOOL; (*Update entries*)
 		ResetError : BOOL; (*Reset error*)
 	END_STRUCT;
 	logbookPAR : 	STRUCT  (*Parameter structure*)
+		DateNow : DATE_AND_TIME; (*Current date and time*)
 		TableConfig : STRING[100]; (*Hide unused rows*)
 		FilterErrorNo : UDINT; (*Filter by error number*)
 		FilterErrorText : STRING[100]; (*Filter by error text*)
@@ -54,18 +57,20 @@ TYPE
 		FilterFacility : ARRAY[0..LOGBOOK_FACILITIES_TOTAL]OF BOOL := [14(TRUE)]; (*Filter by facility*)
 		FilterDateStart : DATE; (*Filter by date*)
 		FilterDateEnd : DATE;
-		DateNow : DATE_AND_TIME; (*Current date and time*)
 		Sorting : enumSorting := sortingDESC; (*Sort date asc or desc*)
 		AbortOnEntriesLimit : BOOL; (*Stop looking for additional entries when limit is reached*)
+		AutoUpdate : BOOL; (*Automatically update data*)
+		AutoUpdateInterval : UINT := 10; (*Interval for auto refresh in s*)
 	END_STRUCT;
 	logbookERR : 	STRUCT  (*Error structure*)
 		State : enumLogbook; (*State where the error occured*)
 	END_STRUCT;
 	logbookDAT : 	STRUCT  (*Data structure*)
 		Entries : logbookENTRIES;
-		EntriesTotal : UINT;
-		CntSeverity : ARRAY[0..3]OF UINT;
-		CntFacility : ARRAY[0..LOGBOOK_FACILITIES_TOTAL]OF UINT;
+		EntriesTotal : UINT; (*Total number of entries*)
+		CntSeverity : ARRAY[0..3]OF UINT; (*Counts by severity*)
+		CntFacility : ARRAY[0..LOGBOOK_FACILITIES_TOTAL]OF UINT; (*Counts by facility*)
+		LastUpdate : STRING[25]; (*Last refresh run*)
 	END_STRUCT;
 	logbookENTRIES : 	STRUCT  (*Entries structure*)
 		EventID : ARRAY[1..LOGBOOK_ENTRIES_TOTAL]OF DINT; (*Event ID*)

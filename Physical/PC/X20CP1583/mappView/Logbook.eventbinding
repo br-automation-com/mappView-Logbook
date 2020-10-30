@@ -69,6 +69,17 @@
 				</Action>
 			</EventHandler>
 		</EventBinding>
+		<!-- Update button -->
+		<EventBinding id="contentLogbook.btnUpdate.Click">
+			<Source xsi:type="widgets.brease.Button.Event" contentRefId="contentLogbook" widgetRefId="btnUpdate" event="Click" />
+			<EventHandler>
+				<Action>
+					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.CMD.Update">
+						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+					</Target>
+				</Action>
+			</EventHandler>
+		</EventBinding>
 		<!-- Reset errors -->
 		<EventBinding id="contentLogbook.btnResetError.Click">
 			<Source xsi:type="widgets.brease.Button.Event" contentRefId="contentLogbook" widgetRefId="btnResetError" event="Click" />

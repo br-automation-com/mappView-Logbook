@@ -25,21 +25,28 @@ FUNCTION GetFacility
 END_FUNCTION
 
 // --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // Insert new entry
 FUNCTION InsertEntry
-	// Compare second
+	// Lets see where new entry fits
 	FOR idx:=1 TO DAT.EntriesTotal DO
+		// Sorting is ascending
 		IF Sorting = sortingASC THEN
+			// New entry is old than this entry
 			IF DTsec < DAT.Entries.DTsec[idx] THEN
 				EXIT;
+				// If entries are within the same second check milisecond data
 			ELSIF DTsec = DAT.Entries.DTsec[idx] THEN
 				IF DTmsec < DAT.Entries.DTmsec[idx] THEN
 					EXIT;
 				END_IF
 			END_IF
+			// Sorting is descending
 		ELSE
+			// New entry is newer than this entry
 			IF DTsec > DAT.Entries.DTsec[idx] THEN
 				EXIT;
+				// If entries are within the same second check milisecond data
 			ELSIF DTsec = DAT.Entries.DTsec[idx] THEN
 				IF DTmsec > DAT.Entries.DTmsec[idx] THEN
 					EXIT;
@@ -48,23 +55,39 @@ FUNCTION InsertEntry
 		END_IF
 	END_FOR;
 
-			
-	// Move all data entrys backwards and fill in new entry
-	DAT.EntriesTotal := DAT.EntriesTotal + 1;	
-	IF idx <= DAT.EntriesTotal AND idx < LOGBOOK_ENTRIES_TOTAL THEN
-		brsmemmove(ADR(DAT.Entries.Code[idx+1]),ADR(DAT.Entries.Code[idx]), (DAT.EntriesTotal - idx) * SIZEOF(DAT.Entries.Code[1]));
-		brsmemmove(ADR(DAT.Entries.Timestamp[idx+1]),ADR(DAT.Entries.Timestamp[idx]), (DAT.EntriesTotal - idx) * SIZEOF(DAT.Entries.Timestamp[1]));
-		brsmemmove(ADR(DAT.Entries.DTsec[idx+1]),ADR(DAT.Entries.DTsec[idx]), (DAT.EntriesTotal - idx) * SIZEOF(DAT.Entries.DTsec[1]));
-		brsmemmove(ADR(DAT.Entries.DTmsec[idx+1]),ADR(DAT.Entries.DTmsec[idx]), (DAT.EntriesTotal - idx) * SIZEOF(DAT.Entries.DTmsec[1]));
-		brsmemmove(ADR(DAT.Entries.ErrorNo[idx+1]),ADR(DAT.Entries.ErrorNo[idx]), (DAT.EntriesTotal - idx) * SIZEOF(DAT.Entries.ErrorNo[1]));
-		brsmemmove(ADR(DAT.Entries.ErrorText[idx+1]),ADR(DAT.Entries.ErrorText[idx]), (DAT.EntriesTotal - idx) * SIZEOF(DAT.Entries.ErrorText[1]));
-		brsmemmove(ADR(DAT.Entries.EventID[idx+1]),ADR(DAT.Entries.EventID[idx]), (DAT.EntriesTotal - idx) * SIZEOF(DAT.Entries.EventID[1]));
-		brsmemmove(ADR(DAT.Entries.FacilityCode[idx+1]),ADR(DAT.Entries.FacilityCode[idx]), (DAT.EntriesTotal - idx) * SIZEOF(DAT.Entries.FacilityCode[1]));
-		brsmemmove(ADR(DAT.Entries.FacilityText[idx+1]),ADR(DAT.Entries.FacilityText[idx]), (DAT.EntriesTotal - idx) * SIZEOF(DAT.Entries.FacilityText[1]));
-		brsmemmove(ADR(DAT.Entries.Severity[idx+1]),ADR(DAT.Entries.Severity[idx]), (DAT.EntriesTotal - idx) * SIZEOF(DAT.Entries.Severity[1]));
+	// Add data as long as buffer is not full
+	IF DAT.EntriesTotal < LOGBOOK_ENTRIES_TOTAL THEN
+		IF DAT.EntriesTotal = 1 AND idx = 1 THEN
+			idy := 1;			
+		ELSIF DAT.EntriesTotal > idx THEN
+			idy := DAT.EntriesTotal - idx + 1;
+		END_IF
+		DAT.EntriesTotal := DAT.EntriesTotal + 1;
+		// If buffer is full check where entry fits
+	ELSE
+		// Entry is beyond scope of buffer
+		IF idx >= LOGBOOK_ENTRIES_TOTAL THEN
+			InsertEntry := NO_SPACE;
+			RETURN;
+		ELSE
+			IF DAT.EntriesTotal - idx > 0 THEN
+				idy := DAT.EntriesTotal - idx - 1;
+			END_IF
+		END_IF
 	END_IF
-
+	
+	brsmemmove(ADR(DAT.Entries.Code[idx+1]),ADR(DAT.Entries.Code[idx]), idy * SIZEOF(DAT.Entries.Code[1]));
+	brsmemmove(ADR(DAT.Entries.Timestamp[idx+1]),ADR(DAT.Entries.Timestamp[idx]), idy * SIZEOF(DAT.Entries.Timestamp[1]));
+	brsmemmove(ADR(DAT.Entries.DTsec[idx+1]),ADR(DAT.Entries.DTsec[idx]), idy * SIZEOF(DAT.Entries.DTsec[1]));
+	brsmemmove(ADR(DAT.Entries.DTmsec[idx+1]),ADR(DAT.Entries.DTmsec[idx]), idy * SIZEOF(DAT.Entries.DTmsec[1]));
+	brsmemmove(ADR(DAT.Entries.ErrorNo[idx+1]),ADR(DAT.Entries.ErrorNo[idx]), idy * SIZEOF(DAT.Entries.ErrorNo[1]));
+	brsmemmove(ADR(DAT.Entries.ErrorText[idx+1]),ADR(DAT.Entries.ErrorText[idx]), idy * SIZEOF(DAT.Entries.ErrorText[1]));
+	brsmemmove(ADR(DAT.Entries.EventID[idx+1]),ADR(DAT.Entries.EventID[idx]), idy * SIZEOF(DAT.Entries.EventID[1]));
+	brsmemmove(ADR(DAT.Entries.FacilityCode[idx+1]),ADR(DAT.Entries.FacilityCode[idx]), idy * SIZEOF(DAT.Entries.FacilityCode[1]));
+	brsmemmove(ADR(DAT.Entries.FacilityText[idx+1]),ADR(DAT.Entries.FacilityText[idx]), idy * SIZEOF(DAT.Entries.FacilityText[1]));
+	brsmemmove(ADR(DAT.Entries.Severity[idx+1]),ADR(DAT.Entries.Severity[idx]), idy * SIZEOF(DAT.Entries.Severity[1]));
 	InsertEntry := idx;
+
 END_FUNCTION
 
 // --------------------------------------------------------------------------------------------------------------------

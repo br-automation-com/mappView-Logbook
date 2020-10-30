@@ -26,6 +26,7 @@ FUNCTION InsertEntry : UINT
 	END_VAR
 	VAR
 		idx : UINT;
+		idy : UINT;
 	END_VAR
 END_FUNCTION
 
