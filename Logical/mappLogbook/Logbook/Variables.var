@@ -38,7 +38,7 @@ END_VAR
 (*---------------------------------------------------------------------------------------------------------------------------------*)
 (*Local constants*)
 VAR CONSTANT
-	FACILITY_NAMES : ARRAY[0..LOGBOOK_FACILITIES_TOTAL] OF STRING[50] := ['$$accsec','$$diag','$$arlogconn','$$fieldbus','$$firewall','$$mapp','$$motion','$$safety','$$arlogsys','$$textsys','$$unitsys','$$arlogusr','$$vision','$$visu'];
-	FACILITY_TEXT : ARRAY[0..LOGBOOK_FACILITIES_TOTAL] OF STRING[50] := ['Access','Commissioning','Connectivity','Fieldbus','Firewall','Mapp','Motion','Safety','System','Text System','Unit System','User','Vision','Visualization'];
+	FACILITY_NAMES : ARRAY[0..LOGBOOK_FACILITIES_MAX] OF STRING[50] := ['$$accsec','$$diag','$$arlogconn','$$fieldbus','$$firewall','$$mapp','$$motion','$$safety','$$arlogsys','$$textsys','$$unitsys','$$arlogusr','$$vision','$$visu'];
+	FACILITY_TEXT : ARRAY[0..LOGBOOK_FACILITIES_MAX] OF STRING[50] := ['Access','Commissioning','Connectivity','Fieldbus','Firewall','Mapp','Motion','Safety','System','Text System','Unit System','User','Vision','Visualization'];
 	NO_SPACE : UINT := 0;
 END_VAR

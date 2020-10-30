@@ -45,10 +45,7 @@
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.DAT.CntSeverity[3]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numCntError" attribute="value" />
 		</Binding>	
-		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::AsGlobalPV:LOGBOOK_ENTRIES_TOTAL" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numEntriesTotalMax" attribute="value" />
-		</Binding>
+		
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterDateStart" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="dtDateStart" attribute="value" />
@@ -213,5 +210,17 @@
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterSeverity[0]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterNotification" attribute="value" />
 		</Binding>
-	</Bindings>
+	<Binding mode="oneWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.EntriesMax" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numEntriesTotalMax" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.AutoUpdate" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkAutoUpdate" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.AutoUpdateInterval" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numAutoUpdate" attribute="value" />
+</Binding>
+</Bindings>
 </BindingsSet>

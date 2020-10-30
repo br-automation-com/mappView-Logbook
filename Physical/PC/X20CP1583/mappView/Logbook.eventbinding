@@ -46,7 +46,7 @@
 		<EventBinding id="EventBinding_1">
 			<Source xsi:type="opcUa.Event" refId="::AsGlobalPV:gLogbook.DAT.EntriesTotal" event="ValueChanged" />
 			<Operand datatype="ANY_INT" name="MAX_ENTRIES">
-				<ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::AsGlobalPV:LOGBOOK_ENTRIES_TOTAL" serverAlias="">
+				<ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::AsGlobalPV:gLogbook.PAR.EntriesMax" serverAlias="">
 					<Method xsi:type="opcUa.NodeAction.GetValue" />
 				</ReadTarget>
 			</Operand>

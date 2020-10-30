@@ -56,7 +56,7 @@ FUNCTION InsertEntry
 	END_FOR;
 
 	// Add data as long as buffer is not full
-	IF DAT.EntriesTotal < LOGBOOK_ENTRIES_TOTAL THEN
+	IF DAT.EntriesTotal < LOGBOOK_ENTRIES_MAX THEN
 		IF DAT.EntriesTotal = 1 AND idx = 1 THEN
 			idy := 1;			
 		ELSIF DAT.EntriesTotal > idx THEN
@@ -66,7 +66,7 @@ FUNCTION InsertEntry
 		// If buffer is full check where entry fits
 	ELSE
 		// Entry is beyond scope of buffer
-		IF idx >= LOGBOOK_ENTRIES_TOTAL THEN
+		IF idx >= LOGBOOK_ENTRIES_MAX THEN
 			InsertEntry := NO_SPACE;
 			RETURN;
 		ELSE

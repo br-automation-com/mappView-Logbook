@@ -36,6 +36,7 @@ PROGRAM _CYCLIC
 				DTGetTime_0.enable := TRUE;
 				DTGetTime_0();
 				gLogbook.PAR.DateNow := DTGetTime_0.DT1;
+				gLogbook.PAR.EntriesMax := LOGBOOK_ENTRIES_MAX;
 				
 				// --------------------------------------------------------------------------------------------------------------------
 				// Refresh all logbook data
@@ -54,6 +55,7 @@ PROGRAM _CYCLIC
 					AutoRefresh.PT := gLogbook.PAR.AutoUpdateInterval*100;
 					AutoRefresh();
 					IF AutoRefresh.Q THEN
+						AutoRefresh(IN:= FALSE);
 						gLogbook.CMD.Update := TRUE;
 						state := enumNext;
 					END_IF
@@ -88,7 +90,7 @@ PROGRAM _CYCLIC
 				gLogbook.PAR.TableConfig := '{"specRows":[{"from":';
 				brsstrcat(ADR(gLogbook.PAR.TableConfig), ADR(tmpSTR));
 				brsstrcat(ADR(gLogbook.PAR.TableConfig), ADR(', "to":'));
-				brsitoa(LOGBOOK_ENTRIES_TOTAL, ADR(tmpSTR));
+				brsitoa(LOGBOOK_ENTRIES_MAX, ADR(tmpSTR));
 				brsstrcat(ADR(gLogbook.PAR.TableConfig), ADR(tmpSTR));
 				brsstrcat(ADR(gLogbook.PAR.TableConfig), ADR(', "visible":false}]}'));	
 				
@@ -103,7 +105,7 @@ PROGRAM _CYCLIC
 				// --------------------------------------------------------------------------------------------------------------------
 			enumOpen:
 				// Last facility reached 
-				IF Facility.CntFacility > LOGBOOK_FACILITIES_TOTAL THEN				
+				IF Facility.CntFacility > LOGBOOK_FACILITIES_MAX THEN				
 					Facility.CntFacility := 0;
 					state := enumLatest;
 					EXIT;
@@ -406,17 +408,17 @@ PROGRAM _CYCLIC
 				// Find next facility from here to the end
 				REPEAT 
 					Facility.CntFacility := Facility.CntFacility + 1;
-					IF Facility.CntFacility <= LOGBOOK_FACILITIES_TOTAL THEN
+					IF Facility.CntFacility <= LOGBOOK_FACILITIES_MAX THEN
 						IF (Facility.Ident[Facility.CntFacility] <> 0 AND NOT Facility.RecordIDIsLast[Facility.CntFacility]) OR (Facility.Ident[Facility.CntFacility] <> 0 AND Facility.RecordID[Facility.CntFacility] = 0) THEN
 							EXIT;
 						END_IF
 					END_IF
-					UNTIL Facility.CntFacility > LOGBOOK_FACILITIES_TOTAL
+					UNTIL Facility.CntFacility > LOGBOOK_FACILITIES_MAX
 				END_REPEAT;
 
 				// --------------------------------------------------------------------------------------------------------------------
 				// No facility found, start at the beginning
-				IF Facility.CntFacility > LOGBOOK_FACILITIES_TOTAL THEN
+				IF Facility.CntFacility > LOGBOOK_FACILITIES_MAX THEN
 					Facility.CntFacility := 0;
 					// Find next facility from start to the end
 					REPEAT 
@@ -424,13 +426,13 @@ PROGRAM _CYCLIC
 							EXIT;
 						END_IF
 						Facility.CntFacility := Facility.CntFacility + 1;
-						UNTIL Facility.CntFacility > LOGBOOK_FACILITIES_TOTAL
+						UNTIL Facility.CntFacility > LOGBOOK_FACILITIES_MAX
 					END_REPEAT;
 				END_IF
 
 				// --------------------------------------------------------------------------------------------------------------------
 				// Finish when no facility found or max entries is reached
-				IF Facility.CntFacility > LOGBOOK_FACILITIES_TOTAL OR (gLogbook.PAR.AbortOnEntriesLimit AND gLogbook.DAT.EntriesTotal = LOGBOOK_ENTRIES_TOTAL) THEN
+				IF Facility.CntFacility > LOGBOOK_FACILITIES_MAX OR (gLogbook.PAR.AbortOnEntriesLimit AND gLogbook.DAT.EntriesTotal = LOGBOOK_ENTRIES_MAX) THEN
 					// Add last update
 					DT_TO_DTStructure(gLogbook.PAR.DateNow, ADR(tmpDTstruct));
 					brsmemset(ADR(gLogbook.DAT.LastUpdate), 0, SIZEOF(gLogbook.DAT.LastUpdate));

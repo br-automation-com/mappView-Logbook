@@ -38,7 +38,6 @@
             <Variable Name="FilterFacility" EnableArrayElements="True" />
           </Variable>
         </Variable>
-        <Variable Name="LOGBOOK_ENTRIES_TOTAL" />
         <Variable Name="LOGBOOK_EXECUTIONS" />
         <Variable Name="LOGBOOK_TEXT_LEN" />
       </GlobalVariables>
