@@ -76,16 +76,19 @@ FUNCTION InsertEntry
 		END_IF
 	END_IF
 	
-	brsmemmove(ADR(DAT.Entries.Code[idx+1]),ADR(DAT.Entries.Code[idx]), idy * SIZEOF(DAT.Entries.Code[1]));
-	brsmemmove(ADR(DAT.Entries.Timestamp[idx+1]),ADR(DAT.Entries.Timestamp[idx]), idy * SIZEOF(DAT.Entries.Timestamp[1]));
-	brsmemmove(ADR(DAT.Entries.DTsec[idx+1]),ADR(DAT.Entries.DTsec[idx]), idy * SIZEOF(DAT.Entries.DTsec[1]));
-	brsmemmove(ADR(DAT.Entries.DTmsec[idx+1]),ADR(DAT.Entries.DTmsec[idx]), idy * SIZEOF(DAT.Entries.DTmsec[1]));
-	brsmemmove(ADR(DAT.Entries.ErrorNo[idx+1]),ADR(DAT.Entries.ErrorNo[idx]), idy * SIZEOF(DAT.Entries.ErrorNo[1]));
-	brsmemmove(ADR(DAT.Entries.ErrorText[idx+1]),ADR(DAT.Entries.ErrorText[idx]), idy * SIZEOF(DAT.Entries.ErrorText[1]));
-	brsmemmove(ADR(DAT.Entries.EventID[idx+1]),ADR(DAT.Entries.EventID[idx]), idy * SIZEOF(DAT.Entries.EventID[1]));
-	brsmemmove(ADR(DAT.Entries.FacilityCode[idx+1]),ADR(DAT.Entries.FacilityCode[idx]), idy * SIZEOF(DAT.Entries.FacilityCode[1]));
-	brsmemmove(ADR(DAT.Entries.FacilityText[idx+1]),ADR(DAT.Entries.FacilityText[idx]), idy * SIZEOF(DAT.Entries.FacilityText[1]));
-	brsmemmove(ADR(DAT.Entries.Severity[idx+1]),ADR(DAT.Entries.Severity[idx]), idy * SIZEOF(DAT.Entries.Severity[1]));
+	// Dont move if there is nothing to move
+	IF idy <> 0 THEN
+		brsmemmove(ADR(DAT.Entries.Code[idx+1]),ADR(DAT.Entries.Code[idx]), idy * SIZEOF(DAT.Entries.Code[1]));
+		brsmemmove(ADR(DAT.Entries.Timestamp[idx+1]),ADR(DAT.Entries.Timestamp[idx]), idy * SIZEOF(DAT.Entries.Timestamp[1]));
+		brsmemmove(ADR(DAT.Entries.DTsec[idx+1]),ADR(DAT.Entries.DTsec[idx]), idy * SIZEOF(DAT.Entries.DTsec[1]));
+		brsmemmove(ADR(DAT.Entries.DTmsec[idx+1]),ADR(DAT.Entries.DTmsec[idx]), idy * SIZEOF(DAT.Entries.DTmsec[1]));
+		brsmemmove(ADR(DAT.Entries.ErrorNo[idx+1]),ADR(DAT.Entries.ErrorNo[idx]), idy * SIZEOF(DAT.Entries.ErrorNo[1]));
+		brsmemmove(ADR(DAT.Entries.ErrorText[idx+1]),ADR(DAT.Entries.ErrorText[idx]), idy * SIZEOF(DAT.Entries.ErrorText[1]));
+		brsmemmove(ADR(DAT.Entries.EventID[idx+1]),ADR(DAT.Entries.EventID[idx]), idy * SIZEOF(DAT.Entries.EventID[1]));
+		brsmemmove(ADR(DAT.Entries.FacilityCode[idx+1]),ADR(DAT.Entries.FacilityCode[idx]), idy * SIZEOF(DAT.Entries.FacilityCode[1]));
+		brsmemmove(ADR(DAT.Entries.FacilityText[idx+1]),ADR(DAT.Entries.FacilityText[idx]), idy * SIZEOF(DAT.Entries.FacilityText[1]));
+		brsmemmove(ADR(DAT.Entries.Severity[idx+1]),ADR(DAT.Entries.Severity[idx]), idy * SIZEOF(DAT.Entries.Severity[1]));
+	END_IF
 	InsertEntry := idx;
 
 END_FUNCTION

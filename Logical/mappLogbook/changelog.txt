@@ -1,6 +1,7 @@
 Next version
 - New update table command
 - Add max entries to parameter structure
+- Show table during run
 
 Version 0.2
 - Fixed special characters not showing up correct

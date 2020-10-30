@@ -10,7 +10,7 @@ PROGRAM _INIT
 	gLogbook.PAR.FilterDateEnd := DT_TO_DATE(DTGetTime_0.DT1);
 	
 	// Read data after reboot
-	// gLogbook.CMD.Refresh := TRUE;
+	gLogbook.CMD.Refresh := TRUE;
 END_PROGRAM
 
 PROGRAM _CYCLIC
@@ -83,16 +83,6 @@ PROGRAM _CYCLIC
 				ArEventLogReadErrorNumber_0(Execute := FALSE);
 				ArEventLogReadDescription_0(Execute := FALSE);
 				ArEventLogReadAddData_0(Execute := FALSE);
-				
-				// --------------------------------------------------------------------------------------------------------------------
-				// Hide unused table rows
-				brsitoa(gLogbook.DAT.EntriesTotal, ADR(tmpSTR));
-				gLogbook.PAR.TableConfig := '{"specRows":[{"from":';
-				brsstrcat(ADR(gLogbook.PAR.TableConfig), ADR(tmpSTR));
-				brsstrcat(ADR(gLogbook.PAR.TableConfig), ADR(', "to":'));
-				brsitoa(LOGBOOK_ENTRIES_MAX, ADR(tmpSTR));
-				brsstrcat(ADR(gLogbook.PAR.TableConfig), ADR(tmpSTR));
-				brsstrcat(ADR(gLogbook.PAR.TableConfig), ADR(', "visible":false}]}'));	
 				
 				// --------------------------------------------------------------------------------------------------------------------
 				// Show status, reset error command
@@ -388,6 +378,17 @@ PROGRAM _CYCLIC
 						httpUtf8ToString_0(enable := TRUE, pSrc := ADR(ErrorText), pDest := ADR(gLogbook.DAT.Entries.ErrorText[idx]), destSize := SIZEOF(gLogbook.DAT.Entries.ErrorText[idx]));
 					END_IF
 				END_IF
+				
+				// --------------------------------------------------------------------------------------------------------------------
+				// Hide unused table rows
+				brsitoa(gLogbook.DAT.EntriesTotal, ADR(tmpSTR));
+				gLogbook.PAR.TableConfig := '{"specRows":[{"from":';
+				brsstrcat(ADR(gLogbook.PAR.TableConfig), ADR(tmpSTR));
+				brsstrcat(ADR(gLogbook.PAR.TableConfig), ADR(', "to":'));
+				brsitoa(LOGBOOK_ENTRIES_MAX, ADR(tmpSTR));
+				brsstrcat(ADR(gLogbook.PAR.TableConfig), ADR(tmpSTR));
+				brsstrcat(ADR(gLogbook.PAR.TableConfig), ADR(', "visible":false}]}'));	
+				
 				state := enumPrep;
 			
 				// --------------------------------------------------------------------------------------------------------------------
