@@ -73,6 +73,13 @@ PROGRAM _CYCLIC
 					gLogbook.Status := ERR_FUB_BUSY;
 					state := stateLatest;
 				END_IF
+				
+				// --------------------------------------------------------------------------------------------------------------------
+				// Create new logbook entry
+				IF gLogbook.CMD.Create THEN
+					gLogbook.Status := ERR_FUB_BUSY;
+					state := stateCreate;
+				END_IF
 
 				// --------------------------------------------------------------------------------------------------------------------
 				// Reset function blocks
@@ -83,6 +90,7 @@ PROGRAM _CYCLIC
 				ArEventLogReadErrorNumber_0(Execute := FALSE);
 				ArEventLogReadDescription_0(Execute := FALSE);
 				ArEventLogReadAddData_0(Execute := FALSE);
+				ArEventLogWrite_0(Execute := FALSE);
 				
 				// --------------------------------------------------------------------------------------------------------------------
 				// Show status, reset error command
@@ -90,6 +98,35 @@ PROGRAM _CYCLIC
 				gLogbook.StatusText := 'Waiting...last update ';
 				brsstrcat(ADR(gLogbook.StatusText), ADR(gLogbook.DAT.LastUpdate));
 				EXIT;
+				// --------------------------------------------------------------------------------------------------------------------
+				// Create a new logbook entry
+				// --------------------------------------------------------------------------------------------------------------------
+			stateCreate:
+				eventID := ArEventLogMakeEventID(UDINT_TO_USINT(gLogbook.PAR.CreateSeverity), 0 , gLogbook.PAR.CreateErrorNo);
+				brsmemset(ADR(AddData), 0, SIZEOF(AddData));
+				brsstrcpy(ADR(AddData), ADR(gLogbook.PAR.CreateErrorText));
+				
+				ArEventLogWrite_0.Execute := TRUE;
+				ArEventLogWrite_0.Ident := Logbook.Ident[gLogbook.PAR.CreateLogbook];
+				ArEventLogWrite_0.EventID := eventID;
+				ArEventLogWrite_0.ObjectID := 'User event';
+				ArEventLogWrite_0.AddDataFormat := arEVENTLOG_ADDFORMAT_TEXT;
+				ArEventLogWrite_0.AddData := ADR(AddData);
+				ArEventLogWrite_0.AddDataSize := brsstrlen(ADR(AddData));
+				ArEventLogWrite_0();
+
+				// Success
+				IF ArEventLogWrite_0.Done AND ArEventLogWrite_0.StatusID = ERR_OK THEN
+					ArEventLogWrite_0(Execute := FALSE);
+					gLogbook.CMD.Create := FALSE;
+					gLogbook.CMD.Update := TRUE;
+					state := stateWait;
+				// Error
+				ELSIF ArEventLogWrite_0.Error THEN
+					gLogbook.ERR.State := state;
+					gLogbook.Status := ArEventLogWrite_0.StatusID;
+					state := stateError;
+				END_IF
 				// --------------------------------------------------------------------------------------------------------------------
 				// Open logbook
 				// --------------------------------------------------------------------------------------------------------------------
@@ -193,7 +230,7 @@ PROGRAM _CYCLIC
 				// Success
 				IF ArEventLogRead_0.Done AND (ArEventLogRead_0.StatusID = ERR_OK OR ArEventLogRead_0.StatusID = arEVENTLOG_WRN_NO_EVENTID) THEN
 					state := stateDetails2;
-					// Error
+				// Error
 				ELSIF ArEventLogRead_0.Error THEN
 					gLogbook.ERR.State := state;
 					gLogbook.Status := ArEventLogRead_0.StatusID;
@@ -210,8 +247,9 @@ PROGRAM _CYCLIC
 
 				// Success
 				IF (ArEventLogReadErrorNumber_0.Done AND ArEventLogReadErrorNumber_0.StatusID = ERR_OK) OR ArEventLogReadErrorNumber_0.StatusID = arEVENTLOG_ERR_NO_ERRORNUMBER THEN
+					brsmemset(ADR(ErrorText), 0, SIZEOF(ErrorText));
 					state := stateDetails3;
-					// Error
+				// Error
 				ELSIF ArEventLogReadErrorNumber_0.Error THEN
 					gLogbook.ERR.State := state;
 					gLogbook.Status := ArEventLogReadErrorNumber_0.StatusID;
@@ -230,8 +268,9 @@ PROGRAM _CYCLIC
 
 				// Success
 				IF (ArEventLogReadDescription_0.Done AND (ArEventLogReadDescription_0.StatusID = ERR_OK OR ArEventLogReadDescription_0.StatusID = arEVENTLOG_WRN_NO_EVENTID)) OR ArEventLogReadDescription_0.StatusID = arEVENTLOG_ERR_NO_DESCRIPTION THEN
+					brsmemset(ADR(AddData), 0, SIZEOF(AddData));
 					state := stateDetails4;
-					// Error
+				// Error
 				ELSIF ArEventLogReadDescription_0.Error THEN
 					gLogbook.ERR.State := state;
 					gLogbook.Status := ArEventLogReadDescription_0.StatusID;
@@ -275,7 +314,7 @@ PROGRAM _CYCLIC
 							END_IF
 						END_IF
 						state := stateFilter;
-						// Error
+					// Error
 					ELSIF ArEventLogReadDescription_0.Error THEN
 						gLogbook.ERR.State := state;
 						gLogbook.Status := ArEventLogReadAddData_0.StatusID;

@@ -504,5 +504,62 @@
 				</Action>
 			</EventHandler>
 		</EventBinding>
+		<!-- Create new entry -->
+		<EventBinding id="contentLogbook.btnNew">
+			<Source xsi:type="widgets.brease.Button.Event" contentRefId="contentLogbook" widgetRefId="btnNew" event="Click" />
+			<EventHandler>
+				<Action>
+					<Target xsi:type="widgets.brease.FlyOut.Action" contentRefId="contentLogbook" widgetRefId="flyNewEntry">
+						<Method xsi:type="widgets.brease.FlyOut.Action.Open" />
+					</Target>
+				</Action>
+			</EventHandler>
+		</EventBinding>
+		<EventBinding id="contentLogbook.btnCreate">
+			<Source xsi:type="widgets.brease.Button.Event" contentRefId="contentLogbook" widgetRefId="btnCreate" event="Click" />
+			<EventHandler>
+				<Action>
+					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:gLogbook.CMD.Create">
+						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+					</Target>
+				</Action>
+			</EventHandler>
+			<EventHandler>
+				<Action>
+					<Target xsi:type="widgets.brease.FlyOut.Action" contentRefId="contentLogbook" widgetRefId="flyNewEntry">
+						<Method xsi:type="widgets.brease.FlyOut.Action.Close" />
+					</Target>
+				</Action>
+			</EventHandler>
+		</EventBinding>
+		<!-- Enable buttons afte firsr run -->
+		<EventBinding id="contentLogbook.">
+			<Source xsi:type="opcUa.Event" refId="::AsGlobalPV:gLogbook.DAT.EntriesTotal" event="ValueChanged" />
+			<EventHandler condition="newValue &gt; 0">
+				<Sequence>
+					<Step order="0">
+						<Action>
+							<Target xsi:type="widgets.brease.Button.Action" contentRefId="contentLogbook" widgetRefId="btnUpdate">
+								<Method xsi:type="widgets.brease.Button.Action.SetEnable" value="true" />
+							</Target>
+						</Action>
+					</Step>
+					<Step order="1">
+						<Action>
+							<Target xsi:type="widgets.brease.Button.Action" contentRefId="contentLogbook" widgetRefId="btnNew">
+								<Method xsi:type="widgets.brease.Button.Action.SetEnable" value="true" />
+							</Target>
+						</Action>
+					</Step>
+					<Step order="2">
+						<Action>
+							<Target xsi:type="widgets.brease.CheckBox.Action" contentRefId="contentLogbook" widgetRefId="chkAutoUpdate">
+								<Method xsi:type="widgets.brease.CheckBox.Action.SetEnable" value="true" />
+							</Target>
+						</Action>
+					</Step>
+				</Sequence>
+			</EventHandler>
+		</EventBinding>
 	</Bindings>
 </EventBindingSet>

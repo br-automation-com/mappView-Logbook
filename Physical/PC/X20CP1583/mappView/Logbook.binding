@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Logbook_binding">
 	<Bindings>				
 		<Binding mode="oneWay">
@@ -209,17 +209,29 @@
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.FilterSeverity[0]" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkFilterNotification" attribute="value" />
 		</Binding>
-	<Binding mode="oneWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.EntriesMax" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numEntriesTotalMax" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.AutoUpdate" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkAutoUpdate" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.AutoUpdateInterval" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numAutoUpdate" attribute="value" />
-</Binding>
-</Bindings>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.EntriesMax" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numEntriesTotalMax" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.AutoUpdate" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="chkAutoUpdate" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.AutoUpdateInterval" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numAutoUpdate" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.CreateErrorNo" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="numCreateErrorNo" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.CreateErrorText" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="txtCreateErrorText" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:gLogbook.PAR.CreateSeverity" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentLogbook" widgetRefId="ddbSeverity" attribute="selectedIndex" />
+		</Binding>
+	</Bindings>
 </BindingsSet>

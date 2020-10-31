@@ -3,6 +3,7 @@ TYPE
 	enumLogbookState : 
 		( (*State machine*)
 		stateWait,
+		stateCreate,
 		stateOpen,
 		stateLatest,
 		stateNext,
@@ -46,7 +47,7 @@ TYPE
 	logbookCMD : 	STRUCT  (*Command structure*)
 		Refresh : BOOL; (*Read all entries*)
 		Update : BOOL; (*Update entries*)
-		Write : BOOL; (*Write a new entry*)
+		Create : BOOL; (*Create a new entry*)
 		ResetError : BOOL; (*Reset error*)
 	END_STRUCT;
 	logbookPAR : 	STRUCT  (*Parameter structure*)
@@ -63,10 +64,10 @@ TYPE
 		AbortOnEntriesLimit : BOOL; (*Stop looking for additional entries when limit is reached*)
 		AutoUpdate : BOOL; (*Automatically update data*)
 		AutoUpdateInterval : UINT := 60; (*Interval for auto update in s*)
-		WriteErrorNo : UDINT; (*Error no for new entry*)
-		WriteErrorText : STRING[LOGBOOK_TEXT_LEN]; (*Error text for new entry*)
-		WriteSeverity : USINT := 0; (*Error severiry for new entry*)
-		WriteLogbook : UINT := 0; (*Error logbook for new entry*)
+		CreateErrorNo : UINT; (*Error no for new entry*)
+		CreateErrorText : STRING[LOGBOOK_TEXT_LEN]; (*Error text for new entry*)
+		CreateSeverity : enumSeverity := severityNotification; (*Error severiry for new entry*)
+		CreateLogbook : enumLogbookType := logUser; (*Error logbook for new entry*)
 	END_STRUCT;
 	logbookERR : 	STRUCT  (*Error structure*)
 		State : enumLogbookState; (*State where the error occured*)

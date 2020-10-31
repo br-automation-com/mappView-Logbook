@@ -31,9 +31,11 @@
               <Variable Name="ErrorText" EnableArrayElements="True" />
               <Variable Name="LogbookName" EnableArrayElements="True" />
             </Variable>
+            <Variable Name="CntLogbook" EnableArrayElements="True" />
           </Variable>
           <Variable Name="PAR">
             <Variable Name="FilterSeverity" EnableArrayElements="True" />
+            <Variable Name="FilterLogbook" EnableArrayElements="True" />
           </Variable>
         </Variable>
         <Variable Name="LOGBOOK_EXECUTIONS" />

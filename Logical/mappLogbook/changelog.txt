@@ -1,7 +1,9 @@
-Next version
+Version 0.3
 - New update table command
+- New create entry command
 - Add max entries to parameter structure
 - Show table during run
+- Renamed facility to logbook and logbook name
 
 Version 0.2
 - Fixed special characters not showing up correct

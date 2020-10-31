@@ -14,6 +14,7 @@ VAR
 	AddData : ARRAY[0..500] OF USINT;
 	Logbook : typLogbook;
 	idx : UINT;
+	eventID : DINT;
 	animation : USINT;
 END_VAR
 (*---------------------------------------------------------------------------------------------------------------------------------*)
@@ -22,6 +23,7 @@ VAR
 	ArEventLogGetPreviousRecordID_0 : ArEventLogGetPreviousRecordID;
 	ArEventLogGetLatestRecordID_0 : ArEventLogGetLatestRecordID;
 	ArEventLogRead_0 : ArEventLogRead;
+	ArEventLogWrite_0 : ArEventLogWrite;
 	ArEventLogReadErrorNumber_0 : ArEventLogReadErrorNumber;
 	ArEventLogReadDescription_0 : ArEventLogReadDescription;
 	ArEventLogReadAddData_0 : ArEventLogReadAddData;
