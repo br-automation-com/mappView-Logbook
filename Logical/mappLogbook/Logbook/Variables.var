@@ -3,7 +3,7 @@ VAR
 	ErrorText : STRING[LOGBOOK_TEXT_LEN];
 	cntFilterNo : UINT;
 	cntFilterText : UINT;
-	cntFilterFacility : UINT;
+	cntFilterLogbook : UINT;
 	cntFilterSeverity : UINT;
 	cntFilterDate : UINT;
 	tmpSTR : STRING[100];
@@ -12,7 +12,7 @@ VAR
 	TimeStart : DATE_AND_TIME;
 	TimeEnd : DATE_AND_TIME;
 	AddData : ARRAY[0..500] OF USINT;
-	Facility : typFacility;
+	Logbook : typLogbook;
 	idx : UINT;
 	animation : USINT;
 END_VAR
@@ -31,14 +31,14 @@ VAR
 END_VAR
 (*Local variables*)
 VAR
-	state : enumLogbook;
+	state : enumLogbookState;
 	ArEventLogGetIdent_0 : ArEventLogGetIdent;
 	executions : USINT;
 END_VAR
 (*---------------------------------------------------------------------------------------------------------------------------------*)
 (*Local constants*)
 VAR CONSTANT
-	FACILITY_NAMES : ARRAY[0..LOGBOOK_FACILITIES_MAX] OF STRING[50] := ['$$accsec','$$diag','$$arlogconn','$$fieldbus','$$firewall','$$mapp','$$motion','$$safety','$$arlogsys','$$textsys','$$unitsys','$$arlogusr','$$vision','$$visu'];
-	FACILITY_TEXT : ARRAY[0..LOGBOOK_FACILITIES_MAX] OF STRING[50] := ['Access','Commissioning','Connectivity','Fieldbus','Firewall','Mapp','Motion','Safety','System','Text System','Unit System','User','Vision','Visualization'];
+	LOGBOOK_NAMES : ARRAY[0..LOGBOOK_BOOKS_MAX] OF STRING[50] := ['$$accsec','$$diag','$$arlogconn','$$fieldbus','$$firewall','$$mapp','$$motion','$$safety','$$arlogsys','$$textsys','$$unitsys','$$arlogusr','$$vision','$$visu'];
+	LOGBOOK_TEXT : ARRAY[0..LOGBOOK_BOOKS_MAX] OF STRING[50] := ['Access','Commissioning','Connectivity','Fieldbus','Firewall','Mapp','Motion','Safety','System','Text System','Unit System','User','Vision','Visualization'];
 	NO_SPACE : UINT := 0;
 END_VAR

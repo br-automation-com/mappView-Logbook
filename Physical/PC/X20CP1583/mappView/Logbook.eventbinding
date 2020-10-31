@@ -174,7 +174,7 @@
 				</Sequence>
 			</EventHandler>
 		</EventBinding>
-		<!-- Filter for facility was changed -->
+		<!-- Filter for logbook was changed -->
 		<EventBinding id="contentLogbook.chkFilterAccSec.ValueChanged">
 			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterAccSec" event="ValueChanged" />
 			<EventHandler>
@@ -315,8 +315,8 @@
 				</Action>
 			</EventHandler>
 		</EventBinding>
-		<EventBinding id="contentLogbook.chkFilterFacility.ValueChanged">
-			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterFacility" event="ValueChanged" />
+		<EventBinding id="contentLogbook.chkFilterLogbook.ValueChanged">
+			<Source xsi:type="widgets.brease.CheckBox.Event" contentRefId="contentLogbook" widgetRefId="chkFilterLogbook" event="ValueChanged" />
 			<EventHandler>
 				<Sequence>
 					<Step order="0">

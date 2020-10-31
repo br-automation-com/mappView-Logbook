@@ -19,7 +19,6 @@
         <Variable Name="gLogbook" AutomaticEnable="True">
           <Variable Name="DAT">
             <Variable Name="CntSeverity" EnableArrayElements="True" />
-            <Variable Name="CntFacility" EnableArrayElements="True" />
             <Variable Name="Entries">
               <Variable Name="EventID" EnableArrayElements="True" />
               <Variable Name="Timestamp" EnableArrayElements="True" />
@@ -28,14 +27,13 @@
               <Variable Name="Severity" EnableArrayElements="True" />
               <Variable Name="Code" EnableArrayElements="True" />
               <Variable Name="FacilityCode" EnableArrayElements="True" />
-              <Variable Name="FacilityText" EnableArrayElements="True" />
               <Variable Name="ErrorNo" EnableArrayElements="True" />
               <Variable Name="ErrorText" EnableArrayElements="True" />
+              <Variable Name="LogbookName" EnableArrayElements="True" />
             </Variable>
           </Variable>
           <Variable Name="PAR">
             <Variable Name="FilterSeverity" EnableArrayElements="True" />
-            <Variable Name="FilterFacility" EnableArrayElements="True" />
           </Variable>
         </Variable>
         <Variable Name="LOGBOOK_EXECUTIONS" />

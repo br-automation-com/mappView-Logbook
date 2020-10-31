@@ -66,12 +66,12 @@ FUNCTION InsertEntry
 		// If buffer is full check where entry fits
 	ELSE
 		// Entry is beyond scope of buffer
-		IF idx >= LOGBOOK_ENTRIES_MAX THEN
+		IF idx > LOGBOOK_ENTRIES_MAX THEN
 			InsertEntry := NO_SPACE;
 			RETURN;
 		ELSE
 			IF DAT.EntriesTotal - idx > 0 THEN
-				idy := DAT.EntriesTotal - idx - 1;
+				idy := DAT.EntriesTotal - idx;
 			END_IF
 		END_IF
 	END_IF
@@ -86,7 +86,7 @@ FUNCTION InsertEntry
 		brsmemmove(ADR(DAT.Entries.ErrorText[idx+1]),ADR(DAT.Entries.ErrorText[idx]), idy * SIZEOF(DAT.Entries.ErrorText[1]));
 		brsmemmove(ADR(DAT.Entries.EventID[idx+1]),ADR(DAT.Entries.EventID[idx]), idy * SIZEOF(DAT.Entries.EventID[1]));
 		brsmemmove(ADR(DAT.Entries.FacilityCode[idx+1]),ADR(DAT.Entries.FacilityCode[idx]), idy * SIZEOF(DAT.Entries.FacilityCode[1]));
-		brsmemmove(ADR(DAT.Entries.FacilityText[idx+1]),ADR(DAT.Entries.FacilityText[idx]), idy * SIZEOF(DAT.Entries.FacilityText[1]));
+		brsmemmove(ADR(DAT.Entries.LogbookName[idx+1]),ADR(DAT.Entries.LogbookName[idx]), idy * SIZEOF(DAT.Entries.LogbookName[1]));
 		brsmemmove(ADR(DAT.Entries.Severity[idx+1]),ADR(DAT.Entries.Severity[idx]), idy * SIZEOF(DAT.Entries.Severity[1]));
 	END_IF
 	InsertEntry := idx;

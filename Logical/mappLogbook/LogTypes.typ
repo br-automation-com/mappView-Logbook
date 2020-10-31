@@ -1,19 +1,19 @@
 
 TYPE
-	enumLogbook : 
+	enumLogbookState : 
 		( (*State machine*)
-		enumWait,
-		enumOpen,
-		enumLatest,
-		enumNext,
-		enumDetails1,
-		enumDetails2,
-		enumDetails3,
-		enumDetails4,
-		enumFilter,
-		enumPrep,
-		enumError,
-		enumNone
+		stateWait,
+		stateOpen,
+		stateLatest,
+		stateNext,
+		stateDetails1,
+		stateDetails2,
+		stateDetails3,
+		stateDetails4,
+		stateFilter,
+		statePrep,
+		stateError,
+		stateNone
 		);
 	enumSeverity : 
 		(
@@ -22,21 +22,21 @@ TYPE
 		severityWarning,
 		severityError
 		);
-	enumFacility : 
+	enumLogbookType : 
 		(
-		facilityAccessSecurity,
-		facilityCommisioning,
-		facilityConnectivity,
-		facilityFieldbus,
-		facilityFirewall,
-		facilityMapp,
-		facilityMotion,
-		facilitySafety,
-		facilitySystem,
-		facilityTextSystem,
-		facilityUnitSystem,
-		facilityUser,
-		facilityVisualization
+		logAccessSecurity,
+		logCommisioning,
+		logConnectivity,
+		logFieldbus,
+		logFirewall,
+		logMapp,
+		logMotion,
+		logSafety,
+		logSystem,
+		logTextSystem,
+		logUnitSystem,
+		logUser,
+		logVisualization
 		);
 	enumSorting : 
 		(
@@ -46,6 +46,7 @@ TYPE
 	logbookCMD : 	STRUCT  (*Command structure*)
 		Refresh : BOOL; (*Read all entries*)
 		Update : BOOL; (*Update entries*)
+		Write : BOOL; (*Write a new entry*)
 		ResetError : BOOL; (*Reset error*)
 	END_STRUCT;
 	logbookPAR : 	STRUCT  (*Parameter structure*)
@@ -53,24 +54,28 @@ TYPE
 		TableConfig : STRING[100]; (*Hide unused rows*)
 		EntriesMax : UINT; (*Maximum number of entries, shadow of LOGBOOK_ENTRIES_MAX*)
 		FilterErrorNo : UDINT; (*Filter by error number*)
-		FilterErrorText : STRING[100]; (*Filter by error text*)
+		FilterErrorText : STRING[LOGBOOK_TEXT_LEN]; (*Filter by error text*)
 		FilterSeverity : ARRAY[0..3]OF BOOL := [4(TRUE)]; (*Filter by severity*)
-		FilterFacility : ARRAY[0..LOGBOOK_FACILITIES_MAX]OF BOOL := [14(TRUE)]; (*Filter by facility*)
+		FilterLogbook : ARRAY[0..LOGBOOK_BOOKS_MAX]OF BOOL := [14(TRUE)]; (*Filter by logbook*)
 		FilterDateStart : DATE; (*Filter by date*)
 		FilterDateEnd : DATE;
 		Sorting : enumSorting := sortingDESC; (*Sort date asc or desc*)
 		AbortOnEntriesLimit : BOOL; (*Stop looking for additional entries when limit is reached*)
 		AutoUpdate : BOOL; (*Automatically update data*)
-		AutoUpdateInterval : UINT := 10; (*Interval for auto update in s*)
+		AutoUpdateInterval : UINT := 60; (*Interval for auto update in s*)
+		WriteErrorNo : UDINT; (*Error no for new entry*)
+		WriteErrorText : STRING[LOGBOOK_TEXT_LEN]; (*Error text for new entry*)
+		WriteSeverity : USINT := 0; (*Error severiry for new entry*)
+		WriteLogbook : UINT := 0; (*Error logbook for new entry*)
 	END_STRUCT;
 	logbookERR : 	STRUCT  (*Error structure*)
-		State : enumLogbook; (*State where the error occured*)
+		State : enumLogbookState; (*State where the error occured*)
 	END_STRUCT;
 	logbookDAT : 	STRUCT  (*Data structure*)
 		Entries : logbookENTRIES;
 		EntriesTotal : UINT; (*Total number of entries*)
 		CntSeverity : ARRAY[0..3]OF UINT; (*Counts by severity*)
-		CntFacility : ARRAY[0..LOGBOOK_FACILITIES_MAX]OF UINT; (*Counts by facility*)
+		CntLogbook : ARRAY[0..LOGBOOK_BOOKS_MAX]OF UINT; (*Counts by logbook*)
 		LastUpdate : STRING[25]; (*Last refresh run*)
 	END_STRUCT;
 	logbookENTRIES : 	STRUCT  (*Entries structure*)
@@ -81,7 +86,7 @@ TYPE
 		Severity : ARRAY[1..LOGBOOK_ENTRIES_MAX]OF USINT; (*Severity*)
 		Code : ARRAY[1..LOGBOOK_ENTRIES_MAX]OF UINT; (*Code*)
 		FacilityCode : ARRAY[1..LOGBOOK_ENTRIES_MAX]OF UINT; (*Facility code*)
-		FacilityText : ARRAY[1..LOGBOOK_ENTRIES_MAX]OF STRING[30]; (*Facility text*)
+		LogbookName : ARRAY[1..LOGBOOK_ENTRIES_MAX]OF STRING[30]; (*Logbook text*)
 		ErrorNo : ARRAY[1..LOGBOOK_ENTRIES_MAX]OF DINT; (*Error number*)
 		ErrorText : ARRAY[1..LOGBOOK_ENTRIES_MAX]OF STRING[LOGBOOK_TEXT_LEN]; (*Error text*)
 	END_STRUCT;

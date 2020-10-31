@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Content id="contentLogbook" height="800" width="1200" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2">
   <Widgets>
-    <Widget xsi:type="widgets.brease.Table" id="tblLogbook" top="235" left="10" width="1185" height="475" zIndex="8" headerSize="30" multiLine="true" rowHeight="15" showSortingButton="true" wordWrap="true" backColorEvenRow="rgba(224, 224, 224, 1)" backColorOddRow="rgba(192, 192, 192, 1)" borderStyle="solid" borderWidth="1px" cellAlign="left center" fontSize="14px" headerFontSize="18px">
+    <Widget xsi:type="widgets.brease.Table" id="tblLogbookData" top="235" left="10" width="1185" height="475" zIndex="8" headerSize="30" multiLine="true" rowHeight="15" showSortingButton="true" wordWrap="true" backColorEvenRow="rgba(224, 224, 224, 1)" backColorOddRow="rgba(192, 192, 192, 1)" borderStyle="solid" borderWidth="1px" cellAlign="left center" fontSize="14px" headerFontSize="18px">
       <Widgets>
         <Widget xsi:type="widgets.brease.TableItemImageList" id="tblErrorImage" zIndex="3" columnWidth="30" imageList="['Media/Logbook/LogbookNotification.png', 'Media/Logbook/LogbookInformation.png', 'Media/Logbook/LogbookWarning.png', 'Media/Logbook/LogbookAlarm.png']" rowHeight="40" />
         <Widget xsi:type="widgets.brease.TableItem" id="tblTimestamp" zIndex="4" columnWidth="120" rowHeight="15" cellAlign="left center" />
         <Widget xsi:type="widgets.brease.TableItem" id="tblErrorNo" zIndex="1" columnWidth="110" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1,'maximumIntegerDigits':12},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1,'maximumIntegerDigits':12},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1,'maximumIntegerDigits':12}}" rowHeight="15" text="No" cellAlign="right center" />
         <Widget xsi:type="widgets.brease.TableItem" id="tblErrorText" zIndex="2" columnWidth="800" rowHeight="15" text="Error Text" cellAlign="left center" />
-        <Widget xsi:type="widgets.brease.TableItem" id="tblFacility" zIndex="5" columnWidth="120" rowHeight="30" text="Facility" cellAlign="left center" />
+        <Widget xsi:type="widgets.brease.TableItem" id="tblLogbookText" zIndex="5" columnWidth="120" rowHeight="30" text="Name" cellAlign="left center" />
       </Widgets>
     </Widget>
     <Widget xsi:type="widgets.brease.ToggleButton" id="btnRefresh" top="720" left="20" width="160" height="70" zIndex="0" mouseDownText="Abort" text="Refresh" cornerRadius="5px" fontSize="26px" />
@@ -102,7 +102,7 @@
     <Widget xsi:type="widgets.brease.Label" id="Label7" top="210" left="910" width="70" height="20" zIndex="314" text="Showing" />
     <Widget xsi:type="widgets.brease.NumericOutput" id="numEntriesTotalMax" top="210" left="1065" width="60" height="20" zIndex="315" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" borderWidth="1px" borderStyle="solid" padding="0px 2px 0px 2px" />
     <Widget xsi:type="widgets.brease.Line" id="Line1" zIndex="316" x1="0" x2="1200" y1="190" y2="190" lineWidth="2px" />
-    <Widget xsi:type="widgets.brease.CheckBox" id="chkFilterFacility" top="10" left="635" width="120" zIndex="317" boxSize="20" text="Facility" value="true" fontSize="14px" bold="true" />
+    <Widget xsi:type="widgets.brease.CheckBox" id="chkFilterLogbook" top="10" left="635" width="120" zIndex="317" boxSize="20" text="Logbook" value="true" fontSize="14px" bold="true" />
     <Widget xsi:type="widgets.brease.DateTimeInput" id="dtDateStart" top="115" left="95" width="130" zIndex="318" format="dd.MM.yyyy " />
     <Widget xsi:type="widgets.brease.Label" id="Label16" top="120" left="10" width="81" height="20" zIndex="319" text="Start Date" textAlign="right" bold="true" />
     <Widget xsi:type="widgets.brease.DateTimeInput" id="dtDateEnd" top="150" left="95" width="130" zIndex="320" format="dd.MM.yyyy" />

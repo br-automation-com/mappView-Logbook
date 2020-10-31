@@ -4,6 +4,6 @@ END_VAR
 VAR CONSTANT
 	LOGBOOK_EXECUTIONS : USINT := 10; (*Executions per cycle*)
 	LOGBOOK_ENTRIES_MAX : UINT := 100; (*Total number of entries*)
-	LOGBOOK_FACILITIES_MAX : USINT := 13; (*Total number of facilities*)
+	LOGBOOK_BOOKS_MAX : USINT := 13; (*Total number of facilities*)
 	LOGBOOK_TEXT_LEN : UINT := 200; (*Error text length*)
 END_VAR
