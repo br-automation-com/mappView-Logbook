@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Content id="contentLogbook" height="800" width="1200" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2">
   <Widgets>
-    <Widget xsi:type="widgets.brease.Table" id="tblLogbookData" top="235" left="10" width="1185" height="475" zIndex="8" headerSize="30" multiLine="true" rowHeight="15" showSortingButton="true" wordWrap="true" backColorEvenRow="rgba(224, 224, 224, 1)" backColorOddRow="rgba(192, 192, 192, 1)" borderStyle="solid" borderWidth="1px" cellAlign="left center" fontSize="14px" headerFontSize="18px">
+    <Widget xsi:type="widgets.brease.Table" id="tblLogbookData" top="235" left="10" width="1185" height="475" zIndex="8" headerSize="30" multiLine="true" rowHeight="15" showSortingButton="true" wordWrap="true" backColorEvenRow="rgba(224, 224, 224, 1)" backColorOddRow="rgba(192, 192, 192, 1)" borderStyle="solid" borderWidth="1px" cellAlign="left center" cellPadding="3px" fontSize="14px" headerFontSize="18px">
       <Widgets>
         <Widget xsi:type="widgets.brease.TableItemImageList" id="tblErrorImage" zIndex="3" columnWidth="30" imageList="['Media/Logbook/LogbookNotification.png', 'Media/Logbook/LogbookInformation.png', 'Media/Logbook/LogbookWarning.png', 'Media/Logbook/LogbookAlarm.png']" rowHeight="40" />
         <Widget xsi:type="widgets.brease.TableItem" id="tblTimestamp" zIndex="4" columnWidth="120" rowHeight="15" cellAlign="left center" />
