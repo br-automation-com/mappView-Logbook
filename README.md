@@ -26,10 +26,9 @@ Recommended task class is #8 with a 10ms cycle time.
 <a name="Revision-History"></a>
 ## Revision History
 
-#### Version 0.2
-- Fixed special characters not showing up correct
-- Fixed filter checkboxes dont remember state
-- Fixed last entry is not always record ID 1
-- Option to stop searching when entry limit is reached
-- Option to abort current update run
-- Smaller bug fixes
+#### Version 0.3
+* New update table command
+* New create entry command
+* Add max entries to parameter structure
+* Show table during run
+* Renamed facility to logbook and logbook name
