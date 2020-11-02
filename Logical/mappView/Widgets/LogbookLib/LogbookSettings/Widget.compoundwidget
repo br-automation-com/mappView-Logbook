@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CompoundWidget id="LogbookSettings" width="1080" height="230" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Widgets>
-      <Widget xsi:type="widgets.brease.GroupBox" id="grpFacilities" top="40" left="550" width="525" height="185" zIndex="101">
+      <Widget xsi:type="widgets.brease.GroupBox" id="grpFacilities" top="40" left="550" width="48%" height="100%" zIndex="101">
       <Widgets>
         <Widget xsi:type="widgets.brease.CheckBox" id="chkFilterAccSec" top="5" left="60" width="170" height="26" zIndex="20" boxSize="20" text="Access/Security" value="true" fontSize="14px" />
         <Widget xsi:type="widgets.brease.CheckBox" id="chkFilterCommissioning" top="29" left="60" width="136" height="25" zIndex="21" boxSize="20" text="Commissioning" value="true" fontSize="14px" />
@@ -61,7 +61,7 @@
         <Widget xsi:type="widgets.brease.Label" id="Label48" top="130" left="475" width="6" height="20" zIndex="169" text=")" padding="0px" />
       </Widgets>
     </Widget>
-    <Widget xsi:type="widgets.brease.GroupBox" id="GroupBox1" top="40" left="345" height="185" zIndex="312">
+    <Widget xsi:type="widgets.brease.GroupBox" id="grpSeverities" top="40" left="345" width="18%" height="100%" zIndex="312">
       <Widgets>
         <Widget xsi:type="widgets.brease.CheckBox" id="chkFilterNotification" top="4" left="14" width="120" zIndex="11" boxSize="20" text="Notification" fontSize="14px" />
         <Widget xsi:type="widgets.brease.CheckBox" id="chkFilterInformation" top="29" left="14" width="120" zIndex="12" boxSize="20" text="Information" value="true" fontSize="14px" />
@@ -241,6 +241,28 @@
 				</Action>
 			</EventHandler>
 		</EventBinding>
+		<!-- Refresh button -->
+	<!--<EventBinding id="btnRefresh.Click">
+			<Source xsi:type="widget.Event" widgetRefId="btnRefresh" event="Click" />
+			<EventHandler>
+				<Action>
+					<Target xsi:type="widget.Action" widgetRefId="labNotification">
+						<Method name="SetText" text="" />
+					</Target>
+				</Action>
+			</EventHandler>
+		</EventBinding> -->
+		<!-- Reset errors -->
+	<!--<EventBinding id="btnResetError.Click">
+			<Source xsi:type="widget.brease.Button.Event" widgetRefId="btnResetError" event="Click" />
+			<EventHandler>
+				<Action>
+					<Target xsi:type="opcUa.NodeAction" serverAlias="Winder" refId="::AsGlobalPV:gLogbook.CMD.ResetError">
+						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+					</Target>
+				</Action>
+			</EventHandler>
+		</EventBinding>-->
 		<!-- Filter for severity was changed -->
 		<EventBinding id="chkFilterNotification.ValueChanged">
 			<Source xsi:type="widget.Event" widgetRefId="chkFilterNotification" event="ValueChanged" />
