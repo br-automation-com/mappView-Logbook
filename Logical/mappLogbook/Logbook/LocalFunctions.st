@@ -34,16 +34,10 @@ FUNCTION InsertEntry
 		IF Sorting = sortingASC THEN
 			// New entry is old than this entry
 			IF DTsec < DAT.Entries.DTsec[idx] THEN
-				IF idx > 1 THEN
-					idx := idx - 1;
-				END_IF
 				EXIT;
-			// If entries are within the same second check milisecond data
+				// If entries are within the same second check milisecond data
 			ELSIF DTsec = DAT.Entries.DTsec[idx] THEN
 				IF DTmsec < DAT.Entries.DTmsec[idx] THEN
-					IF idx > 1 THEN
-						idx := idx - 1;
-					END_IF
 					EXIT;
 				END_IF
 			END_IF
@@ -65,7 +59,7 @@ FUNCTION InsertEntry
 	IF DAT.EntriesTotal < LOGBOOK_ENTRIES_MAX THEN
 		IF DAT.EntriesTotal = 1 AND idx = 1 THEN
 			idy := 1;			
-		ELSIF DAT.EntriesTotal > idx THEN
+		ELSIF DAT.EntriesTotal >= idx THEN
 			idy := DAT.EntriesTotal - idx + 1;
 		END_IF
 		DAT.EntriesTotal := DAT.EntriesTotal + 1;
